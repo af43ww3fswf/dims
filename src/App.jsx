@@ -207,23 +207,21 @@ export default function App({ initialState = EMPTY_STATE, onSave = async () => {
           </div>
           {state.overrideEnabled && (
             <div className="override-fields">
-              <label className="block-field">
+              <label className="block-field full-width">
                 <span>OVERRIDE PRESENTABLE VALUE</span>
                 <textarea disabled={!state.overrideEnabled} value={state.overrideValue} placeholder="Enter the complete presentable value" onChange={(e) => setState({ ...state, overrideValue: e.target.value })} />
               </label>
-              <div>
-                <label className="block-field">
-                  <span>REASON FOR OVERRIDE (REQUIRED)</span>
-                  <select disabled={!state.overrideEnabled} value={state.overrideReason} onChange={(e) => setState({ ...state, overrideReason: e.target.value })}>
-                    <option value="">Select a reason (required)</option>
-                    {OVERRIDE_REASONS.map((reason) => <option key={reason}>{reason}</option>)}
-                  </select>
-                </label>
-                <label className="block-field">
-                  <span>OVERRIDE NOTE</span>
-                  <textarea disabled={!state.overrideEnabled} value={state.overrideNote} placeholder="Provide details about the override (optional)" onChange={(e) => setState({ ...state, overrideNote: e.target.value })} />
-                </label>
-              </div>
+              <label className="block-field">
+                <span>REASON FOR OVERRIDE (REQUIRED)</span>
+                <select disabled={!state.overrideEnabled} value={state.overrideReason} onChange={(e) => setState({ ...state, overrideReason: e.target.value })}>
+                  <option value="">Select a reason (required)</option>
+                  {OVERRIDE_REASONS.map((reason) => <option key={reason}>{reason}</option>)}
+                </select>
+              </label>
+              <label className="block-field">
+                <span>OVERRIDE NOTE</span>
+                <textarea disabled={!state.overrideEnabled} value={state.overrideNote} placeholder="Provide details about the override (optional)" onChange={(e) => setState({ ...state, overrideNote: e.target.value })} />
+              </label>
             </div>
           )}
         </section>
