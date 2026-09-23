@@ -51,8 +51,8 @@ select:focus, input:focus, textarea:focus, button:focus-visible { outline: 2px s
 .check { display: flex; align-items: center; gap: 10px; font-size: 14px; }
 .check input { width: 18px; height: 18px; accent-color: #000; }
 
-.measurement-grid { display: grid; grid-template-columns: 150px repeat(3, minmax(130px, 1fr)); align-items: end; gap: 8px 16px; }
-.measurement-grid.diameter { grid-template-columns: 150px repeat(2, minmax(160px, 1fr)) 1fr; }
+.measurement-grid { display: grid; grid-template-columns: 150px repeat(3, minmax(80px, 110px)); align-items: end; gap: 8px 16px; justify-content: start; }
+.measurement-grid.diameter { grid-template-columns: 150px repeat(2, minmax(80px, 110px)) 1fr; justify-content: start; }
 .field { display: grid; gap: 5px; font-size: 12px; font-weight: 600; }
 .field input[readonly] { background: #fff; color: #000; border-style: dashed; }
 .row-label { font-size: 13px; font-weight: 600; align-self: center; }
