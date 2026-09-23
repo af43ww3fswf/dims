@@ -83,6 +83,7 @@ function DimensionSet({ set, index, onChange, onDelete }) {
             <>
               <Field label="Diameter (Ø)" value={set.diameterCm} onChange={(v) => update({ diameterCm: v })} />
               <Field label="Depth (D)" value={set.depthCm} onChange={(v) => update({ depthCm: v })} />
+              <div />
             </>
           ) : (
             <>
@@ -97,6 +98,7 @@ function DimensionSet({ set, index, onChange, onDelete }) {
             <>
               <Field label="" value={formatInches(set.diameterCm)} readOnly />
               <Field label="" value={formatInches(set.depthCm)} readOnly />
+              <div />
             </>
           ) : (
             <>

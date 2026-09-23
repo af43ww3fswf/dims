@@ -17,7 +17,7 @@ body { margin: 0; background: #fff; }
 button, input, select, textarea { font: inherit; }
 
 .dimensions-app {
-  width: min(1480px, calc(100% - 32px));
+  width: min(960px, calc(100% - 32px));
   margin: 16px auto;
   padding: 20px;
   background: #fff;
@@ -52,7 +52,6 @@ select:focus, input:focus, textarea:focus, button:focus-visible { outline: 2px s
 .check input { width: 18px; height: 18px; accent-color: #000; }
 
 .measurement-grid { display: grid; grid-template-columns: 150px repeat(3, minmax(80px, 110px)); align-items: end; gap: 8px 16px; justify-content: start; }
-.measurement-grid.diameter { grid-template-columns: 150px repeat(2, minmax(80px, 110px)) 1fr; justify-content: start; }
 .field { display: grid; gap: 5px; font-size: 12px; font-weight: 600; }
 .field input[readonly] { background: #fff; color: #000; border-style: dashed; }
 .row-label { font-size: 13px; font-weight: 600; align-self: center; }
@@ -91,7 +90,7 @@ footer { display: flex; justify-content: flex-end; align-items: center; gap: 10p
   .dimensions-app { width: 100%; margin: 0; padding: 14px; border: 0; }
   .set-body, .lower-grid, .override-fields { grid-template-columns: 1fr; }
   .set-options { border-right: 0; border-bottom: 1px solid #000; padding: 0 0 14px; }
-  .measurement-grid, .measurement-grid.diameter { grid-template-columns: 120px 1fr; }
+  .measurement-grid { grid-template-columns: 120px 1fr; }
   .area-output { grid-column: 2; }
   .formula { grid-column: 2; }
   .set-heading { flex-wrap: wrap; gap: 12px; }
