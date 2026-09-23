@@ -22,6 +22,7 @@ button, input, select, textarea { font: inherit; }
   padding: 20px;
   background: #fff;
   border: 1px solid #000;
+  font-family: 'BeausiteDetailClear', Inter, "Segoe UI", Arial, sans-serif;
 }
 
 h1 { margin: 0 0 18px; font-size: 21px; letter-spacing: .015em; }
