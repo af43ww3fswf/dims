@@ -74,7 +74,7 @@ function DimensionSet({ set, index, onChange, onDelete }) {
       <div className="set-body">
         <div className="set-options">
           <Checkbox label="Include in Output" checked={set.includeInOutput} onChange={(v) => update({ includeInOutput: v })} />
-          <Checkbox label="Mark as Framed" checked={set.framed} onChange={(v) => update({ framed: v })} />
+          <Checkbox label="Show as Framed" checked={set.framed} onChange={(v) => update({ framed: v })} />
           <Checkbox label="Mark as Approximate Size (~)" checked={set.approximate} onChange={(v) => update({ approximate: v })} />
         </div>
 
@@ -184,7 +184,7 @@ export default function App({ initialState = EMPTY_STATE, onSave = async () => {
         </>
       )}
 
-      <p className="helper">ⓘ &nbsp;All dimensions are entered in centimetres and automatically converted to inches. Approximate size is set independently for each dimension set.</p>
+      <p className="helper">ⓘ &nbsp;All dimensions are entered in centimetres and automatically converted to inches.</p>
 
       <div className="block-field">
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>

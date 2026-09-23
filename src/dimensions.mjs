@@ -1,7 +1,7 @@
 export const EMPTY_STATE = Object.freeze({
   sets: [],
   notes: "",
-  includeNotesInOutput: true,
+  includeNotesInOutput: false,
   overrideEnabled: false,
   overrideValue: "",
   overrideReason: "",
@@ -15,7 +15,7 @@ export function createDimensionSet(index = 0) {
       `dimension-${Date.now()}-${Math.random().toString(16).slice(2)}`,
     sequence: index + 1,
     type: "standard",
-    includeInOutput: true,
+    includeInOutput: false,
     framed: false,
     approximate: false,
     heightCm: "",
