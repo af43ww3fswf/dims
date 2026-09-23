@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useId } from "react";
 import {
   EMPTY_STATE,
   buildPreview,
@@ -18,19 +18,22 @@ const OVERRIDE_REASONS = [
 ];
 
 function Checkbox({ label, checked, onChange }) {
+  const id = useId();
   return (
-    <label className="check">
-      <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+    <label className="check" htmlFor={id}>
+      <input id={id} type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
       <span>{label}</span>
     </label>
   );
 }
 
 function Field({ label, value, onChange, readOnly = false, placeholder = "", ariaLabel }) {
+  const id = useId();
   return (
-    <label className="field">
+    <label className="field" htmlFor={id}>
       {label && <span>{label}</span>}
       <input
+        id={id}
         inputMode="decimal"
         value={value}
         placeholder={placeholder}
@@ -46,14 +49,16 @@ function Field({ label, value, onChange, readOnly = false, placeholder = "", ari
 function DimensionSet({ set, index, onChange, onDelete }) {
   const update = (patch) => onChange({ ...set, ...patch });
   const isDiameter = set.type === "diameter";
+  const typeId = useId();
 
   return (
     <section className="dimension-set" aria-labelledby={`set-title-${set.id}`}>
       <div className="set-heading">
         <h2 id={`set-title-${set.id}`}>Set {index + 1}</h2>
-        <label className="type-select">
+        <label className="type-select" htmlFor={typeId}>
           <span>Dimension type</span>
           <select
+            id={typeId}
             value={set.type}
             onChange={(e) =>
               update(
@@ -125,6 +130,10 @@ export default function App({ initialState = EMPTY_STATE, onSave = async () => {
   const [errors, setErrors] = useState([]);
   const [status, setStatus] = useState("");
   const preview = useMemo(() => buildPreview(state), [state]);
+  
+  const overrideValueId = useId();
+  const overrideReasonId = useId();
+  const overrideNoteId = useId();
 
   const updateSet = (index, nextSet) => {
     setState((current) => ({
@@ -204,20 +213,20 @@ export default function App({ initialState = EMPTY_STATE, onSave = async () => {
           </div>
           {state.overrideEnabled && (
             <div className="override-fields">
-              <label className="block-field full-width">
+              <label className="block-field full-width" htmlFor={overrideValueId}>
                 <span>OVERRIDE PRESENTABLE VALUE</span>
-                <textarea disabled={!state.overrideEnabled} value={state.overrideValue} placeholder="Enter the complete presentable value" onChange={(e) => setState({ ...state, overrideValue: e.target.value })} />
+                <textarea id={overrideValueId} disabled={!state.overrideEnabled} value={state.overrideValue} placeholder="Enter the complete presentable value" onChange={(e) => setState({ ...state, overrideValue: e.target.value })} />
               </label>
-              <label className="block-field">
+              <label className="block-field" htmlFor={overrideReasonId}>
                 <span>REASON FOR OVERRIDE (REQUIRED)</span>
-                <select disabled={!state.overrideEnabled} value={state.overrideReason} onChange={(e) => setState({ ...state, overrideReason: e.target.value })}>
+                <select id={overrideReasonId} disabled={!state.overrideEnabled} value={state.overrideReason} onChange={(e) => setState({ ...state, overrideReason: e.target.value })}>
                   <option value="">Select a reason (required)</option>
                   {OVERRIDE_REASONS.map((reason) => <option key={reason}>{reason}</option>)}
                 </select>
               </label>
-              <label className="block-field">
+              <label className="block-field" htmlFor={overrideNoteId}>
                 <span>OVERRIDE NOTE</span>
-                <textarea disabled={!state.overrideEnabled} value={state.overrideNote} placeholder="Provide details about the override (optional)" onChange={(e) => setState({ ...state, overrideNote: e.target.value })} />
+                <textarea id={overrideNoteId} disabled={!state.overrideEnabled} value={state.overrideNote} placeholder="Provide details about the override (optional)" onChange={(e) => setState({ ...state, overrideNote: e.target.value })} />
               </label>
             </div>
           )}
