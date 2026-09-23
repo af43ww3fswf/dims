@@ -124,7 +124,7 @@ export default function App({ initialState = EMPTY_STATE, onSave = async () => {
   const [state, setState] = useState(() => ({ ...EMPTY_STATE, ...initialState, sets: initialState.sets ?? [] }));
   const [errors, setErrors] = useState([]);
   const [status, setStatus] = useState("");
-  const preview = useMemo(() => buildPreview(state.sets), [state.sets]);
+  const preview = useMemo(() => buildPreview(state), [state]);
 
   const updateSet = (index, nextSet) => {
     setState((current) => ({
@@ -183,10 +183,13 @@ export default function App({ initialState = EMPTY_STATE, onSave = async () => {
 
       <p className="helper">ⓘ &nbsp;All dimensions are entered in centimetres and automatically converted to inches. Approximate size is set independently for each dimension set.</p>
 
-      <label className="block-field">
-        <span>DESCRIPTION / QUANTITY NOTES</span>
+      <div className="block-field">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span>DESCRIPTION / QUANTITY NOTES</span>
+          <Checkbox label="Include in Output" checked={state.includeNotesInOutput} onChange={(v) => setState({ ...state, includeNotesInOutput: v })} />
+        </div>
         <textarea value={state.notes} placeholder="Add notes about quantities, parts or dimensions (optional)" onChange={(e) => setState({ ...state, notes: e.target.value })} />
-      </label>
+      </div>
 
       <div className="lower-grid">
         <section className="preview-panel">

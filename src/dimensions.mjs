@@ -1,6 +1,7 @@
 export const EMPTY_STATE = Object.freeze({
   sets: [],
   notes: "",
+  includeNotesInOutput: true,
   overrideEnabled: false,
   overrideValue: "",
   overrideReason: "",
@@ -115,12 +116,18 @@ export function formatDimensionSet(set) {
   return `${set.approximate ? "~ " : ""}${metric} | ${imperial}${set.framed ? " (framed)" : ""}`;
 }
 
-export function buildPreview(sets) {
-  return sets
+export function buildPreview(state) {
+  const lines = state.sets
     .filter((set) => set.includeInOutput)
     .sort((a, b) => a.sequence - b.sequence)
     .map(formatDimensionSet)
     .filter(Boolean);
+
+  if (state.includeNotesInOutput && state.notes.trim()) {
+    lines.push(state.notes.trim());
+  }
+
+  return lines;
 }
 
 export function validateState(state) {
@@ -157,5 +164,5 @@ export function validateState(state) {
 export function finalPresentableValue(state) {
   return state.overrideEnabled
     ? state.overrideValue.trim()
-    : buildPreview(state.sets).join("\n");
+    : buildPreview(state).join("\n");
 }
