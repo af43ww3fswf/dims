@@ -14,7 +14,6 @@ const OVERRIDE_REASONS = [
   "Irregular shape / custom installation",
   "Artist-supplied wording",
   "Multi-part work",
-  "Legacy data exception",
   "Other"
 ];
 

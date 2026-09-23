@@ -89,9 +89,9 @@ export function formatDimensionSet(set) {
   if (set.type === "diameter") {
     const diameterCm = formatCm(set.diameterCm);
     if (!diameterCm) return "";
-    const metricParts = compact([`Ø ${diameterCm}`, formatCm(set.depthCm)]);
+    const metricParts = compact([`diameter ${diameterCm}`, formatCm(set.depthCm)]);
     const imperialParts = compact([
-      `Ø ${formatInches(set.diameterCm)}`,
+      `diameter ${formatInches(set.diameterCm)}`,
       formatInches(set.depthCm)
     ]);
     metric = `${metricParts.join(" × ")} cm`;
@@ -102,7 +102,7 @@ export function formatDimensionSet(set) {
       formatCm(set.widthCm),
       formatCm(set.depthCm)
     ]);
-    if (metricParts.length < 2) return "";
+    if (metricParts.length === 0) return "";
     const imperialParts = compact([
       formatInches(set.heightCm),
       formatInches(set.widthCm),
