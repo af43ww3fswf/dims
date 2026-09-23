@@ -73,12 +73,13 @@ select:focus, input:focus, textarea:focus, button:focus-visible { outline: 2px s
 .helper { margin: 10px 0 18px; font-size: 13px; color: #000; }
 
 .block-field { display: grid; gap: 6px; font-size: 12px; font-weight: 700; }
-.lower-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 14px; margin-top: 14px; }
+.lower-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 14px; }
 .preview-panel, .override-panel { border: 1px solid #000; padding: 14px; }
-.preview-panel h2, .override-panel h2 { margin-bottom: 12px; font-size: 12px; }
+.preview-panel h2 { margin-bottom: 12px; font-size: 12px; }
+.override-panel h2 { margin: 0; font-size: 12px; }
 .preview-panel p { margin: 7px 0; font-size: 14px; }
-.empty-copy { display: grid; min-height: 110px; place-content: center; color: #000; }
-.override-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+.empty-copy { display: grid; min-height: 80px; place-content: center; color: #000; }
+.override-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; border-top: 1px solid #eee; padding-top: 12px; }
 .override-fields > div { display: grid; gap: 10px; }
 .override-fields select { width: 100%; }
 [disabled] { background: #fff; color: #000; border-style: dashed; cursor: not-allowed; opacity: 0.6; }

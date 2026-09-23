@@ -196,32 +196,36 @@ export default function App({ initialState = EMPTY_STATE, onSave = async () => {
 
       <div className="lower-grid">
         <section className="preview-panel">
-          <h2>PRESENTABLE FIELD OUTPUT (PREVIEW)</h2>
+          <h2>AUTO GENERATED OUTPUT PREVIEW</h2>
           {preview.length ? preview.map((line, index) => <p key={index}>{line}</p>) : <p className="empty-copy">No dimensions to display.</p>}
         </section>
 
         <section className="override-panel">
-          <h2>MANUAL OVERRIDE</h2>
-          <Checkbox label="Enable Custom Override" checked={state.overrideEnabled} onChange={(v) => setState({ ...state, overrideEnabled: v })} />
-          <div className="override-fields">
-            <label className="block-field">
-              <span>OVERRIDE PRESENTABLE VALUE</span>
-              <textarea disabled={!state.overrideEnabled} value={state.overrideValue} placeholder="Enter the complete presentable value" onChange={(e) => setState({ ...state, overrideValue: e.target.value })} />
-            </label>
-            <div>
-              <label className="block-field">
-                <span>REASON FOR OVERRIDE (REQUIRED)</span>
-                <select disabled={!state.overrideEnabled} value={state.overrideReason} onChange={(e) => setState({ ...state, overrideReason: e.target.value })}>
-                  <option value="">Select a reason (required)</option>
-                  {OVERRIDE_REASONS.map((reason) => <option key={reason}>{reason}</option>)}
-                </select>
-              </label>
-              <label className="block-field">
-                <span>OVERRIDE NOTE</span>
-                <textarea disabled={!state.overrideEnabled} value={state.overrideNote} placeholder="Provide details about the override (optional)" onChange={(e) => setState({ ...state, overrideNote: e.target.value })} />
-              </label>
-            </div>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <h2>MANUAL OVERRIDE</h2>
+            <Checkbox label="Enable Custom Override" checked={state.overrideEnabled} onChange={(v) => setState({ ...state, overrideEnabled: v })} />
           </div>
+          {state.overrideEnabled && (
+            <div className="override-fields">
+              <label className="block-field">
+                <span>OVERRIDE PRESENTABLE VALUE</span>
+                <textarea disabled={!state.overrideEnabled} value={state.overrideValue} placeholder="Enter the complete presentable value" onChange={(e) => setState({ ...state, overrideValue: e.target.value })} />
+              </label>
+              <div>
+                <label className="block-field">
+                  <span>REASON FOR OVERRIDE (REQUIRED)</span>
+                  <select disabled={!state.overrideEnabled} value={state.overrideReason} onChange={(e) => setState({ ...state, overrideReason: e.target.value })}>
+                    <option value="">Select a reason (required)</option>
+                    {OVERRIDE_REASONS.map((reason) => <option key={reason}>{reason}</option>)}
+                  </select>
+                </label>
+                <label className="block-field">
+                  <span>OVERRIDE NOTE</span>
+                  <textarea disabled={!state.overrideEnabled} value={state.overrideNote} placeholder="Provide details about the override (optional)" onChange={(e) => setState({ ...state, overrideNote: e.target.value })} />
+                </label>
+              </div>
+            </div>
+          )}
         </section>
       </div>
 
