@@ -75,8 +75,11 @@ export function calculateAreaCm2(set) {
 export function formatArea(set) {
   const areaCm2 = calculateAreaCm2(set);
   if (areaCm2 === null) return "—";
-  const areaIn2 = areaCm2 / 6.4516;
-  return `${areaCm2.toLocaleString("en-GB", { maximumFractionDigits: 1 })} cm² | ${areaIn2.toLocaleString("en-GB", { maximumFractionDigits: 1 })} in²`;
+  
+  const areaM2 = areaCm2 / 10000;
+  const areaFt2 = areaCm2 / 929.0304;
+
+  return `${areaM2.toLocaleString("en-GB", { maximumFractionDigits: 2 })} m² | ${areaFt2.toLocaleString("en-GB", { maximumFractionDigits: 2 })} ft²`;
 }
 
 function compact(values) {

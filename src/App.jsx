@@ -35,6 +35,7 @@ function Field({ label, value, onChange, readOnly = false, placeholder = "" }) {
         value={value}
         placeholder={placeholder}
         readOnly={readOnly}
+        tabIndex={readOnly ? -1 : 0}
         onChange={readOnly ? undefined : (e) => onChange(e.target.value)}
       />
     </label>
