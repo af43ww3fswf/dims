@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Beausite Detail Clear';
+  font-family: 'BeausiteDetailClear';
   src: url('./BeausiteDetail-Clear-Web.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
@@ -8,7 +8,7 @@
 :root {
   color: #000;
   background: #fff;
-  font-family: 'Beausite Detail Clear', Inter, "Segoe UI", Arial, sans-serif;
+  font-family: 'BeausiteDetailClear', Inter, "Segoe UI", Arial, sans-serif;
   font-synthesis: none;
 }
 
