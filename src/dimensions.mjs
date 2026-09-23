@@ -15,7 +15,7 @@ export function createDimensionSet(index = 0) {
       `dimension-${Date.now()}-${Math.random().toString(16).slice(2)}`,
     sequence: index + 1,
     type: "standard",
-    includeInOutput: false,
+    includeInOutput: true,
     framed: false,
     approximate: false,
     heightCm: "",
