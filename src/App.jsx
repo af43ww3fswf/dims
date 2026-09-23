@@ -26,16 +26,17 @@ function Checkbox({ label, checked, onChange }) {
   );
 }
 
-function Field({ label, value, onChange, readOnly = false, placeholder = "" }) {
+function Field({ label, value, onChange, readOnly = false, placeholder = "", ariaLabel }) {
   return (
     <label className="field">
-      <span>{label}</span>
+      {label && <span>{label}</span>}
       <input
         inputMode="decimal"
         value={value}
         placeholder={placeholder}
         readOnly={readOnly}
         tabIndex={readOnly ? -1 : 0}
+        aria-label={ariaLabel || label || undefined}
         onChange={readOnly ? undefined : (e) => onChange(e.target.value)}
       />
     </label>
@@ -97,21 +98,21 @@ function DimensionSet({ set, index, onChange, onDelete }) {
           <div className="row-label">Auto-converted in.</div>
           {isDiameter ? (
             <>
-              <Field label="" value={formatInches(set.diameterCm)} readOnly />
-              <Field label="" value={formatInches(set.depthCm)} readOnly />
+              <Field label="" ariaLabel="Auto-converted diameter in inches" value={formatInches(set.diameterCm)} readOnly />
+              <Field label="" ariaLabel="Auto-converted depth in inches" value={formatInches(set.depthCm)} readOnly />
               <div />
             </>
           ) : (
             <>
-              <Field label="" value={formatInches(set.heightCm)} readOnly />
-              <Field label="" value={formatInches(set.widthCm)} readOnly />
-              <Field label="" value={formatInches(set.depthCm)} readOnly />
+              <Field label="" ariaLabel="Auto-converted height in inches" value={formatInches(set.heightCm)} readOnly />
+              <Field label="" ariaLabel="Auto-converted width in inches" value={formatInches(set.widthCm)} readOnly />
+              <Field label="" ariaLabel="Auto-converted depth in inches" value={formatInches(set.depthCm)} readOnly />
             </>
           )}
 
           <div className="row-label">Area</div>
           <div style={{ gridColumn: "span 2" }}>
-            <Field label="" value={formatArea(set)} readOnly />
+            <Field label="" ariaLabel="Calculated Area" value={formatArea(set)} readOnly />
           </div>
         </div>
       </div>
@@ -184,10 +185,10 @@ export default function App({ initialState = EMPTY_STATE, onSave = async () => {
 
       <div className="block-field">
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span>DESCRIPTION / QUANTITY NOTES</span>
+          <span id="notes-label">DESCRIPTION / QUANTITY NOTES</span>
           <Checkbox label="Include in Output" checked={state.includeNotesInOutput} onChange={(v) => setState({ ...state, includeNotesInOutput: v })} />
         </div>
-        <textarea value={state.notes} placeholder="Add notes about quantities, parts or dimensions (optional)" onChange={(e) => setState({ ...state, notes: e.target.value })} />
+        <textarea aria-labelledby="notes-label" value={state.notes} placeholder="Add notes about quantities, parts or dimensions (optional)" onChange={(e) => setState({ ...state, notes: e.target.value })} />
       </div>
 
       <div className="lower-grid">
