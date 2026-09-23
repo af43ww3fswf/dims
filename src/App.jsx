@@ -109,14 +109,10 @@ function DimensionSet({ set, index, onChange, onDelete }) {
             </>
           )}
 
-          <div className="row-label">Calculated area</div>
-          <output className="area-output">
-            <span>{formatArea(set)}</span>
-            <span className="lock" aria-label="Read only">▣</span>
-          </output>
-          <small className="formula">
-            {isDiameter ? "π × (Diameter ÷ 2)²" : "Height × Width"}
-          </small>
+          <div className="row-label">Area</div>
+          <div style={{ gridColumn: "span 2" }}>
+            <Field label="" value={formatArea(set)} readOnly />
+          </div>
         </div>
       </div>
     </section>
