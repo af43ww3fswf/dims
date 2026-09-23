@@ -160,9 +160,9 @@ export default function App({ initialState = EMPTY_STATE, onSave = async () => {
       <h1>DIMENSIONS &amp; SIZING</h1>
 
       {state.sets.length === 0 ? (
-        <section className="empty-state">
+        <section className="empty-state" aria-labelledby="empty-state-heading">
           <div className="dimension-icon" aria-hidden="true">↕ □ ↔</div>
-          <h2>No dimension sets added</h2>
+          <h2 id="empty-state-heading">No dimension sets added</h2>
           <p>Add a dimension set to enter the artwork measurements.</p>
           <button className="primary" type="button" onClick={() => setState((s) => ({ ...s, sets: [createDimensionSet(0)] }))}>
             + Add dimension set
@@ -192,14 +192,14 @@ export default function App({ initialState = EMPTY_STATE, onSave = async () => {
       </div>
 
       <div className="lower-grid">
-        <section className="preview-panel">
-          <h2>AUTO GENERATED OUTPUT PREVIEW</h2>
+        <section className="preview-panel" aria-labelledby="preview-heading">
+          <h2 id="preview-heading">AUTO GENERATED OUTPUT PREVIEW</h2>
           {preview.length ? preview.map((line, index) => <p key={index}>{line}</p>) : <p className="empty-copy">No dimensions to display.</p>}
         </section>
 
-        <section className="override-panel">
+        <section className="override-panel" aria-labelledby="override-heading">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <h2>MANUAL OVERRIDE</h2>
+            <h2 id="override-heading">MANUAL OVERRIDE</h2>
             <Checkbox label="Enable Custom Override" checked={state.overrideEnabled} onChange={(v) => setState({ ...state, overrideEnabled: v })} />
           </div>
           {state.overrideEnabled && (
