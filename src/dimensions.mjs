@@ -91,7 +91,7 @@ export function formatDimensionSet(set) {
     if (!diameterCm) return "";
     const metricParts = compact([`Diameter ${diameterCm}`, formatCm(set.depthCm)]);
     const imperialParts = compact([
-      `Diameter ${formatInches(set.diameterCm)}`,
+      formatInches(set.diameterCm),
       formatInches(set.depthCm)
     ]);
     metric = `${metricParts.join(" × ")} cm`;
