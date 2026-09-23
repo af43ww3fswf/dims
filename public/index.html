@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensions Editor Preview</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        #root { border: 1px solid #ccc; padding: 20px; min-height: 200px; margin-top: 20px;}
+    </style>
+</head>
+<body>
+    <h1>Dimensions Editor Preview</h1>
+    <p>This is a simulated Content Hub environment running the bundled component.</p>
+    <div id="root"></div>
+
+    <!-- Load the bundle -->
+    <script src="./wc-dimensions-editor.js"></script>
+
+    <!-- Simulate Content Hub execution -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const rootElement = document.getElementById("root");
+            
+            // Mock clientBuilder
+            const clientBuilder = {
+                getClient: () => ({ /* mock client */ })
+            };
+
+            // Initialize the component
+            const component = window.createExternalRoot(rootElement, clientBuilder);
+
+            // Mock Content Hub entity and config
+            const mockProps = {
+                entity: {
+                    getPropertyValue: (propName) => {
+                        console.log(`Getting property: ${propName}`);
+                        return null; // Return mock dimensions string if needed
+                    },
+                    setPropertyValue: (propName, value) => {
+                        console.log(`Setting property: ${propName} to ${value}`);
+                    }
+                },
+                config: {
+                    // add any mock config if required
+                }
+            };
+
+            // Render the component
+            component.render(mockProps);
+        });
+    </script>
+</body>
+</html>

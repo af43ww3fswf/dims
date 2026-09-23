@@ -1,0 +1,91 @@
+:root {
+  color: #111;
+  background: #f3f3f3;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: #f3f3f3; }
+button, input, select, textarea { font: inherit; }
+
+.dimensions-app {
+  width: min(1480px, calc(100% - 32px));
+  margin: 16px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  box-shadow: 0 4px 18px rgb(0 0 0 / 6%);
+}
+
+h1 { margin: 0 0 18px; font-size: 21px; letter-spacing: .015em; }
+h2 { margin: 0; font-size: 16px; }
+
+.sets { display: grid; gap: 10px; }
+.dimension-set { border: 1px solid #111; border-radius: 4px; overflow: hidden; }
+.set-heading { display: flex; align-items: end; gap: 32px; padding: 14px 16px; border-bottom: 1px solid #ddd; }
+.set-heading h2 { align-self: center; min-width: 82px; }
+.type-select { display: grid; gap: 5px; font-size: 12px; font-weight: 600; }
+.type-select select { width: 230px; }
+.icon-button { margin-left: auto; border: 0; background: transparent; font-size: 24px; cursor: pointer; }
+
+select, input, textarea {
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  background: #fff;
+  color: #111;
+}
+select, input { height: 36px; padding: 0 11px; }
+textarea { width: 100%; min-height: 68px; padding: 10px; resize: vertical; }
+select:focus, input:focus, textarea:focus, button:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+
+.set-body { display: grid; grid-template-columns: 300px 1fr; gap: 22px; padding: 14px 16px; }
+.set-options { display: grid; align-content: start; gap: 12px; padding-right: 20px; border-right: 1px solid #ddd; }
+.check { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.check input { width: 18px; height: 18px; accent-color: #111; }
+
+.measurement-grid { display: grid; grid-template-columns: 150px repeat(3, minmax(130px, 1fr)); align-items: end; gap: 8px 16px; }
+.measurement-grid.diameter { grid-template-columns: 150px repeat(2, minmax(160px, 1fr)) 1fr; }
+.field { display: grid; gap: 5px; font-size: 12px; font-weight: 600; }
+.field input[readonly] { background: #f3f3f3; color: #333; }
+.row-label { font-size: 13px; font-weight: 600; align-self: center; }
+.row-label.source { align-self: end; padding-bottom: 10px; }
+.area-output { grid-column: 2 / span 2; min-height: 36px; padding: 8px 10px; background: #f3f3f3; border: 1px solid #bbb; border-radius: 3px; display: flex; justify-content: space-between; }
+.formula { align-self: center; color: #555; }
+
+.add-set, .primary, .secondary { border-radius: 3px; min-height: 38px; padding: 0 20px; cursor: pointer; }
+.add-set { width: 100%; margin-top: 10px; background: #fff; border: 1px solid #111; font-weight: 650; }
+.primary { background: #111; color: #fff; border: 1px solid #111; font-weight: 650; }
+.secondary { background: #fff; color: #111; border: 1px solid #777; }
+
+.empty-state { min-height: 410px; border: 1px dashed #aaa; display: grid; place-content: center; justify-items: center; gap: 16px; text-align: center; }
+.empty-state h2 { font-size: 26px; }
+.empty-state p { margin: 0; color: #444; }
+.dimension-icon { border: 2px solid #111; border-radius: 8px; padding: 16px; font-size: 28px; letter-spacing: 6px; }
+.helper { margin: 10px 0 18px; font-size: 13px; }
+
+.block-field { display: grid; gap: 6px; font-size: 12px; font-weight: 700; }
+.lower-grid { display: grid; grid-template-columns: minmax(300px, .75fr) 1.4fr; gap: 14px; margin-top: 14px; }
+.preview-panel, .override-panel { border: 1px solid #d3d3d3; padding: 14px; }
+.preview-panel h2, .override-panel h2 { margin-bottom: 12px; font-size: 12px; }
+.preview-panel p { margin: 7px 0; font-size: 14px; }
+.empty-copy { display: grid; min-height: 110px; place-content: center; color: #666; }
+.override-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+.override-fields > div { display: grid; gap: 10px; }
+.override-fields select { width: 100%; }
+[disabled] { background: #f3f3f3; color: #999; cursor: not-allowed; }
+
+.errors { margin-top: 12px; padding: 10px 14px; border: 1px solid #111; background: #f5f5f5; }
+.errors p { margin: 4px 0; }
+footer { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 14px; }
+.status { margin-right: auto; font-size: 13px; }
+
+@media (max-width: 900px) {
+  .dimensions-app { width: 100%; margin: 0; padding: 14px; border: 0; }
+  .set-body, .lower-grid, .override-fields { grid-template-columns: 1fr; }
+  .set-options { border-right: 0; border-bottom: 1px solid #ddd; padding: 0 0 14px; }
+  .measurement-grid, .measurement-grid.diameter { grid-template-columns: 120px 1fr; }
+  .area-output { grid-column: 2; }
+  .formula { grid-column: 2; }
+  .set-heading { flex-wrap: wrap; gap: 12px; }
+}
