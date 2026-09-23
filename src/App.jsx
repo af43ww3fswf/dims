@@ -40,7 +40,7 @@ function Field({ label, value, onChange, readOnly = false, placeholder = "", ari
         readOnly={readOnly}
         tabIndex={readOnly ? -1 : 0}
         aria-label={ariaLabel || label || undefined}
-        onChange={readOnly ? undefined : (e) => onChange(e.target.value)}
+        onChange={readOnly ? undefined : (e) => onChange(e.target.value.replace(/-/g, ""))}
       />
     </label>
   );
